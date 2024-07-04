@@ -13,7 +13,6 @@ function TaskProviderWrapper(props) {
     if (hasLoaded) return;
 
     try {
-      console.log("get Tasks");
       const response = await fetch(API_URL);
       const data = await response.json();
       setTasks(data.reverse());
