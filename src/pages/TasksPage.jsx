@@ -8,7 +8,17 @@ import CreateTask from "../components/CreateTask";
 function TasksPage() {
   const { tasks, hasLoaded, hasError, getTasks } = useContext(TaskContext);
 
-  const [counter, setCounter] = useState(0);
+  const useCounter = () => {
+    const [counter, setCounter] = useState(1);
+
+    const increase = () => setCounter(counter + 1);
+    const decrease = () => setCounter(counter - 1);
+
+    return { counter, increase, decrease };
+  };
+
+  const taskCounter = useCounter();
+  const completedCounter = useCounter();
 
   useEffect(() => {
     getTasks();
@@ -29,17 +39,17 @@ function TasksPage() {
           <div className="counter">
             <h3 className="counter-title">Tareas</h3>
             <div className="btns">
-              <button onClick={() => setCounter(counter - 1)}>-</button>
-              <h3>{counter}</h3>
-              <button onClick={() => setCounter(counter + 1)}>+</button>
+              <button onClick={taskCounter.decrease}>-</button>
+              <h3>{taskCounter.counter}</h3>
+              <button onClick={taskCounter.increase}>+</button>
             </div>
           </div>
           <div className="counter">
             <h3 className="counter-title">Completadas</h3>
             <div className="btns">
-              <button onClick={() => setCounter(counter - 1)}>-</button>
-              <h3>{counter}</h3>
-              <button onClick={() => setCounter(counter + 1)}>+</button>
+              <button onClick={completedCounter.decrease}>-</button>
+              <h3>{completedCounter.counter}</h3>
+              <button onClick={completedCounter.increase}>+</button>
             </div>
           </div>
         </div>
