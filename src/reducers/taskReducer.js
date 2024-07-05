@@ -21,6 +21,8 @@ const initState = {
       completed: false,
     },
   ],
+  hasLoaded: true,
+  hasError: false
 };
 
 const taskReducer = (state = initState, action) => {

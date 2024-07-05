@@ -1,15 +1,12 @@
 import "./TasksPage.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
 import { connect } from "react-redux";
 
 function TasksPage(props) {
-  const hasLoaded = true;
-  const hasError = false;
-  const getTasks = () => {};
-  const { tasks } = props;
+  const { tasks, hasLoaded, hasError } = props;
 
   const useCounter = () => {
     const [counter, setCounter] = useState(1);
@@ -22,10 +19,6 @@ function TasksPage(props) {
 
   const taskCounter = useCounter();
   const completedCounter = useCounter();
-
-  useEffect(() => {
-    getTasks();
-  }, []);
 
   const taskCards = tasks.map((task) => (
     <li key={task.id}>
@@ -76,6 +69,8 @@ function TasksPage(props) {
 const mapStateToProps = (state) => {
   return {
     tasks: state.tasks,
+    hasLoaded: state.hasLoaded,
+    hasError: state.hasError,
   };
 };
 
