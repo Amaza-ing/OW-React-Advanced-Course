@@ -11,7 +11,6 @@ function CreateTask() {
   const newTaskInputRef = useRef();
 
   const focus = () => {
-    console.log(newTaskInputRef.current);
     newTaskInputRef.current.focus();
   };
 
