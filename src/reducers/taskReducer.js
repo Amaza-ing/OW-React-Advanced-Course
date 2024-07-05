@@ -22,10 +22,18 @@ const initState = {
     },
   ],
   hasLoaded: true,
-  hasError: false
+  hasError: false,
 };
 
 const taskReducer = (state = initState, action) => {
+  console.log(action);
+  if (action.type === "CREATE_TASK") {
+    const updatedTasks = [action.newTask, ...state.tasks];
+    return {
+      ...state,
+      tasks: updatedTasks,
+    };
+  }
   return state;
 };
 

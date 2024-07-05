@@ -1,9 +1,10 @@
 import "./CreateTask.css";
 import { useRef, useState } from "react";
 import { createId } from "../utils/utils";
+import { connect } from "react-redux";
 
-function CreateTask() {
-  const addTask = () => {};
+function CreateTask(props) {
+  const { addTask } = props;
 
   const [taskTitle, setTaskTitle] = useState("");
 
@@ -45,4 +46,12 @@ function CreateTask() {
   );
 }
 
-export default CreateTask;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTask: (newTask) => {
+      dispatch({ type: "CREATE_TASK", newTask });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CreateTask);
