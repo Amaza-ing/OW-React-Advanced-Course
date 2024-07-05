@@ -9,6 +9,28 @@
     text-align: center;
   }
 
+  .counters {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    .counter {
+      text-align: center;
+
+      .counter-title {
+        margin: 0;
+      }
+
+      .btns {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+
+  }
+
   .task-list {
     background-image: url("../assets/cork.jpg");
     border: 10px solid brown;
