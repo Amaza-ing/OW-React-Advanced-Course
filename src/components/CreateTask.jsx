@@ -1,10 +1,9 @@
 import "./CreateTask.css";
-import { useContext, useRef, useState } from "react";
-import { TaskContext } from "../context/task.context";
+import { useRef, useState } from "react";
 import { createId } from "../utils/utils";
 
 function CreateTask() {
-  const { addTask } = useContext(TaskContext);
+  const addTask = () => {};
 
   const [taskTitle, setTaskTitle] = useState("");
 

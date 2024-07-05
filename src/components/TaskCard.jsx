@@ -1,9 +1,7 @@
 import "./TaskCard.css";
-import { useContext } from "react";
-import { TaskContext } from "../context/task.context";
 
 function TaskCard({ task }) {
-  const { updateTask } = useContext(TaskContext);
+  const updateTask = () => {};
 
   const handleInput = (e) => {
     const updatedTask = { ...task, title: e.target.value };
