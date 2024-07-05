@@ -1,8 +1,7 @@
 import "./TaskCard.css";
+import { connect } from "react-redux";
 
-function TaskCard({ task }) {
-  const updateTask = () => {};
-
+function TaskCard({ task, updateTask }) {
   const handleInput = (e) => {
     const updatedTask = { ...task, title: e.target.value };
     updateTask(updatedTask);
@@ -21,4 +20,12 @@ function TaskCard({ task }) {
   );
 }
 
-export default TaskCard;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTask: (updatedTask) => {
+      dispatch({ type: "UPDATE_TASK", updatedTask });
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(TaskCard);

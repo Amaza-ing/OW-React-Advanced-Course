@@ -33,6 +33,15 @@ const taskReducer = (state = initState, action) => {
       ...state,
       tasks: updatedTasks,
     };
+  } else if (action.type === "UPDATE_TASK") {
+    const updatedTasks = state.tasks.map((task) => {
+      if (task.id === action.updatedTask.id) return action.updatedTask;
+      return task;
+    });
+    return {
+      ...state,
+      tasks: updatedTasks,
+    };
   }
   return state;
 };
