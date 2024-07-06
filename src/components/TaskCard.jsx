@@ -1,15 +1,18 @@
+import { updateTask } from "../redux/taskSlice";
 import "./TaskCard.css";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
-function TaskCard({ task, updateTask }) {
+function TaskCard({ task }) {
+  const dispatch = useDispatch();
+
   const handleInput = (e) => {
     const updatedTask = { ...task, title: e.target.value };
-    updateTask(updatedTask);
+    dispatch(updateTask(updatedTask));
   };
 
   const handleCheck = () => {
     const updatedTask = { ...task, completed: !task.completed };
-    updateTask(updatedTask);
+    dispatch(updateTask(updatedTask));
   };
 
   return (
@@ -20,12 +23,4 @@ function TaskCard({ task, updateTask }) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateTask: (updatedTask) => {
-      dispatch({ type: "UPDATE_TASK", updatedTask });
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(TaskCard);
+export default TaskCard;

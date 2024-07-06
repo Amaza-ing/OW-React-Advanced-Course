@@ -3,10 +3,10 @@ import { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-function TasksPage(props) {
-  const { tasks, hasLoaded, hasError } = props;
+function TasksPage() {
+  const { tasks, hasLoaded, hasError } = useSelector((state) => state.task);
 
   const useCounter = () => {
     const [counter, setCounter] = useState(1);
@@ -66,12 +66,4 @@ function TasksPage(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tasks: state.tasks,
-    hasLoaded: state.hasLoaded,
-    hasError: state.hasError,
-  };
-};
-
-export default connect(mapStateToProps)(TasksPage);
+export default TasksPage;
