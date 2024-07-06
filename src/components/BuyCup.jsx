@@ -1,7 +1,5 @@
 import "./BuyProduct.css";
 import cup from "../assets/cup.jpg";
-import { useState } from "react";
-import ProductWrapper from "../hoc/ProductWrapper";
 
 function BuyCup(props) {
   const { quantity, decrease, increase } = props;
@@ -24,4 +22,4 @@ function BuyCup(props) {
   );
 }
 
-export default ProductWrapper(BuyCup);
+export default BuyCup;

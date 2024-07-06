@@ -1,7 +1,5 @@
 import "./BuyProduct.css";
 import tshirt from "../assets/tshirt.png";
-import { useState } from "react";
-import ProductWrapper from "../hoc/ProductWrapper";
 
 function BuyTShirt(props) {
   const { quantity, decrease, increase } = props;
@@ -24,4 +22,4 @@ function BuyTShirt(props) {
   );
 }
 
-export default ProductWrapper(BuyTShirt);
+export default BuyTShirt;

@@ -2,8 +2,29 @@ import BuyCup from "../components/BuyCup";
 import BuyTShirt from "../components/BuyTShirt";
 import HeaderComponent from "../components/HeaderComponent";
 import { Link } from "react-router-dom";
+import ProductWrapper from "../hoc/ProductWrapper";
 
 function HomePage() {
+  const getBuyTShirt = (quantity, decrease, increase) => {
+    return (
+      <BuyTShirt
+        quantity={quantity}
+        decrease={decrease}
+        increase={increase}
+      ></BuyTShirt>
+    );
+  };
+
+  const getBuyCup = (quantity, decrease, increase) => {
+    return (
+      <BuyCup
+        quantity={quantity}
+        decrease={decrease}
+        increase={increase}
+      ></BuyCup>
+    );
+  };
+
   return (
     <>
       <HeaderComponent></HeaderComponent>
@@ -30,8 +51,8 @@ function HomePage() {
           justifyContent: "space-around",
         }}
       >
-        <BuyTShirt></BuyTShirt>
-        <BuyCup></BuyCup>
+        <ProductWrapper render={getBuyTShirt} />
+        <ProductWrapper render={getBuyCup} />
       </section>
     </>
   );
