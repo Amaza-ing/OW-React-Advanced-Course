@@ -1,13 +1,9 @@
 import "./CreateTask.css";
 import { useRef, useState } from "react";
 import { createId } from "../utils/utils";
-import { useDispatch } from "react-redux";
-import { createTask } from "../redux/taskSlice";
 
 function CreateTask() {
   const [taskTitle, setTaskTitle] = useState("");
-
-  const dispatch = useDispatch();
 
   const newTaskInputRef = useRef();
 
@@ -29,7 +25,7 @@ function CreateTask() {
       completed: false,
     };
 
-    dispatch(createTask(newTask));
+    // addTask(newTask);
     setTaskTitle("");
   };
 

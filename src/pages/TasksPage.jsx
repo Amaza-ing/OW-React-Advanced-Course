@@ -3,10 +3,13 @@ import { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
-import { useSelector } from "react-redux";
+import { useRecoilValue } from "recoil";
+import { taskListState } from "../atoms/taskListState";
 
 function TasksPage() {
-  const { tasks, hasLoaded, hasError } = useSelector((state) => state.task);
+  const tasks = useRecoilValue(taskListState);
+  const hasLoaded = true;
+  const hasError = false;
 
   const useCounter = () => {
     const [counter, setCounter] = useState(1);
