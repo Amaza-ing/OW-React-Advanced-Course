@@ -1,8 +1,11 @@
 import "./CreateTask.css";
 import { useRef, useState } from "react";
 import { createId } from "../utils/utils";
+import { useRecoilState } from "recoil";
+import { taskListState } from "../atoms/taskListState";
 
 function CreateTask() {
+  const [taskList, setTaskList] = useRecoilState(taskListState);
   const [taskTitle, setTaskTitle] = useState("");
 
   const newTaskInputRef = useRef();
@@ -25,7 +28,7 @@ function CreateTask() {
       completed: false,
     };
 
-    // addTask(newTask);
+    setTaskList((prev) => [newTask, ...prev]);
     setTaskTitle("");
   };
 
