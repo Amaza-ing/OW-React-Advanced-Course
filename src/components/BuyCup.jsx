@@ -1,17 +1,10 @@
 import "./BuyProduct.css";
 import cup from "../assets/cup.jpg";
-import React, { useState } from "react";
+import { useState } from "react";
+import ProductWrapper from "../hoc/ProductWrapper";
 
-function BuyCup() {
-  const [quantity, setQuantity] = useState(0);
-
-  const decrease = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
-  };
-
-  const increase = () => {
-    setQuantity(quantity + 1);
-  };
+function BuyCup(props) {
+  const { quantity, decrease, increase } = props;
 
   const buy = () => {
     console.log(`${quantity} tazas compradas`);
@@ -31,4 +24,4 @@ function BuyCup() {
   );
 }
 
-export default BuyCup;
+export default ProductWrapper(BuyCup);

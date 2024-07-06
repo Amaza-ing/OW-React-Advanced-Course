@@ -1,21 +1,14 @@
 import "./BuyProduct.css";
 import tshirt from "../assets/tshirt.png";
-import React, { useState } from "react";
+import { useState } from "react";
+import ProductWrapper from "../hoc/ProductWrapper";
 
-function BuyTShirt() {
-  const [quantity, setQuantity] = useState(0);
-
-  const decrease = () => {
-    if (quantity > 0) setQuantity(quantity - 1);
-  };
-
-  const increase = () => {
-    setQuantity(quantity + 1);
-  };
+function BuyTShirt(props) {
+  const { quantity, decrease, increase } = props;
 
   const buy = () => {
     console.log(`${quantity} Camisetas compradas`);
-  }
+  };
 
   return (
     <div className="product-container">
@@ -31,4 +24,4 @@ function BuyTShirt() {
   );
 }
 
-export default BuyTShirt;
+export default ProductWrapper(BuyTShirt);
