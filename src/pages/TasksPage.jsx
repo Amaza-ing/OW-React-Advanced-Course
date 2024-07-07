@@ -4,7 +4,7 @@ import HeaderComponent from "../components/HeaderComponent";
 import { TaskContext } from "../context/task.context";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
-import FooterComponent from "../components/FooterComponent";
+import CompoundFooter from "../components/CompoundFooter";
 
 function TasksPage() {
   const { tasks, hasLoaded, hasError, getTasks } = useContext(TaskContext);
@@ -69,14 +69,17 @@ function TasksPage() {
         </ul>
       </section>
 
-      <FooterComponent
-        title="Task App"
-        titleClass="footer-title"
-        socialMedia="Twitter Instagram Facebook"
-        socialMediaClass="social-media"
-        copyright="© Task App"
-        copyrightClass="copyright"
-      ></FooterComponent>
+      <CompoundFooter className="footer">
+        <CompoundFooter.Title className="footer-title">
+          Task App
+        </CompoundFooter.Title>
+        <CompoundFooter.SocialMedia className="social-media">
+          Twitter Instagram Facebook
+        </CompoundFooter.SocialMedia>
+        <CompoundFooter.Copyright className="copyright">
+          © Task App
+        </CompoundFooter.Copyright>
+      </CompoundFooter>
     </>
   );
 }
