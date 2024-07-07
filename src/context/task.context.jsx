@@ -7,34 +7,34 @@ function TaskProviderWrapper(props) {
   const [hasLoaded, setLoaded] = useState(false);
   const [hasError, setError] = useState(false);
 
+  const API_URL = "https://ca5f63dffc6a5f0f7362.free.beeceptor.com/api/tasks/";
+
   const getTasks = async () => {
-    setLoaded(true);
-    setTasks([
-      {
-        id: "1",
-        title: "Comprar la cena",
-        completed: false,
-      },
-      {
-        id: "2",
-        title: "Cocinar",
-        completed: false,
-      },
-      {
-        id: "3",
-        title: "Cenar",
-        completed: false,
-      },
-      {
-        id: "4",
-        title: "Lavar los platos",
-        completed: false,
-      },
-    ]);
+    if (hasLoaded) return;
+
+    try {
+      console.log("get Tasks");
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setTasks(data.reverse());
+      setLoaded(true);
+      setError(false);
+    } catch (e) {
+      setError(true);
+    }
   };
 
   const addTask = async (newTask) => {
-    setTasks([newTask, ...tasks]);
+    try {
+      await fetch(API_URL, {
+        method: "POST",
+        body: JSON.stringify(newTask),
+      });
+      setTasks([newTask, ...tasks]);
+      setError(false);
+    } catch (e) {
+      setError(true);
+    }
   };
 
   const updateTask = (updatedTask) => {

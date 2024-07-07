@@ -69,9 +69,9 @@ function TasksPage() {
             <CreateTask></CreateTask>
           </li>
           {hasError ? (
-            <h2>No se han podido obtener las tareas</h2>
+            <h2 data-testid="error-msg">No se han podido obtener las tareas</h2>
           ) : !hasLoaded ? (
-            <h2>Cargando...</h2>
+            <h2 data-testid="loading-msg">Cargando...</h2>
           ) : (
             taskCards
           )}
