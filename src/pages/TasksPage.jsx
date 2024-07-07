@@ -38,14 +38,21 @@ function TasksPage() {
       <HeaderComponent></HeaderComponent>
 
       <section id="tasks-page">
-        <h2 className="title">Tasks</h2>
+        <h2 className="title" data-testid="tasks-title">
+          Tasks
+        </h2>
         <div className="counters">
           <div className="counter">
             <h3 className="counter-title">Tareas</h3>
             <div className="btns">
               <button onClick={taskCounter.decrease}>-</button>
-              <h3>{taskCounter.counter}</h3>
-              <button onClick={taskCounter.increase}>+</button>
+              <h3 data-testid="task-counter">{taskCounter.counter}</h3>
+              <button
+                onClick={taskCounter.increase}
+                data-testid="increase-task-counter"
+              >
+                +
+              </button>
             </div>
           </div>
           <div className="counter">
