@@ -10,7 +10,9 @@ function BuyTShirt(props) {
 
   return (
     <div className="product-container">
-      <h3 className="product-name">Compra camisetas</h3>
+      <h3 className="product-name" data-testid="tshirt">
+        Compra camisetas
+      </h3>
       <img className="img" src={tshirt} alt="t-shirt" />
       <div className="quantity">
         <button onClick={decrease}>-</button>
