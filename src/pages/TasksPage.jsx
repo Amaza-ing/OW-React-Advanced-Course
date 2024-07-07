@@ -5,9 +5,25 @@ import { TaskContext } from "../context/task.context";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
 import CompoundFooter from "../components/CompoundFooter";
+import { FixedSizeList } from "react-window";
 
 function TasksPage() {
   console.log("Tasks Page rendered");
+
+  const data = Array.from({ length: 100000 }, (_, index) => `Item ${index}`);
+
+  const renderRow = ({ index, style }) => (
+    <div
+      style={{
+        ...style,
+        display: "flex",
+        alignItems: "center",
+        borderBottom: "1px solid lightgrey",
+      }}
+    >
+      <span>{data[index]}</span>
+    </div>
+  );
 
   const { tasks, hasLoaded, hasError, getTasks } = useContext(TaskContext);
 
@@ -70,6 +86,17 @@ function TasksPage() {
           )}
         </ul>
       </section>
+
+      <div>
+        <FixedSizeList
+          height={400}
+          width={400}
+          itemCount={data.length}
+          itemSize={40}
+        >
+          {renderRow}
+        </FixedSizeList>
+      </div>
 
       <CompoundFooter className="footer">
         <CompoundFooter.Title className="footer-title">
