@@ -1,8 +1,10 @@
 import "./TaskCard.css";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { TaskContext } from "../context/task.context";
 
 function TaskCard({ task }) {
+  console.log("Task Card rendered");
+
   const { updateTask } = useContext(TaskContext);
 
   const handleInput = (e) => {
@@ -23,4 +25,4 @@ function TaskCard({ task }) {
   );
 }
 
-export default TaskCard;
+export default React.memo(TaskCard);

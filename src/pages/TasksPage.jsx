@@ -7,6 +7,8 @@ import CreateTask from "../components/CreateTask";
 import CompoundFooter from "../components/CompoundFooter";
 
 function TasksPage() {
+  console.log("Tasks Page rendered");
+
   const { tasks, hasLoaded, hasError, getTasks } = useContext(TaskContext);
 
   const useCounter = () => {
