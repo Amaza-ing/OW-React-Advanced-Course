@@ -4,6 +4,7 @@ import HeaderComponent from "../components/HeaderComponent";
 import { TaskContext } from "../context/task.context";
 import TaskCard from "../components/TaskCard";
 import CreateTask from "../components/CreateTask";
+import FooterComponent from "../components/FooterComponent";
 
 function TasksPage() {
   const { tasks, hasLoaded, hasError, getTasks } = useContext(TaskContext);
@@ -33,6 +34,7 @@ function TasksPage() {
   return (
     <>
       <HeaderComponent></HeaderComponent>
+
       <section id="tasks-page">
         <h2 className="title">Tasks</h2>
         <div className="counters">
@@ -66,6 +68,15 @@ function TasksPage() {
           )}
         </ul>
       </section>
+
+      <FooterComponent
+        title="Task App"
+        titleClass="footer-title"
+        socialMedia="Twitter Instagram Facebook"
+        socialMediaClass="social-media"
+        copyright="© Task App"
+        copyrightClass="copyright"
+      ></FooterComponent>
     </>
   );
 }
