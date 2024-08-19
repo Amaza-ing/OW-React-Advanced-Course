@@ -22,7 +22,7 @@ function App() {
         <h4>
           También puedes ver las ramas desde una terminal en Visual Studio Code
           o el editor de código que utilices escribiendo el siguiente comando:
-          <pre>git branch</pre>
+          <pre>git branch -a</pre>
         </h4>
         <h4>
           Puedes moverte a cada rama escribiendo el comando:
